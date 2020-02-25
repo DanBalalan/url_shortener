@@ -15,15 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.urlpatterns import format_suffix_patterns
-
-from shortener.views import ShortenerView, RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('api.urls')),
-    path('<str:short_url>', RedirectView.as_view()),
-    path('short/', ShortenerView.as_view())
+    path('', include('rest_auth.urls')),
+    path('register/', include('rest_auth.registration.urls')),
+    path('', include('shortener.urls')),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])

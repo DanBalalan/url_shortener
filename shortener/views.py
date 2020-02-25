@@ -13,12 +13,15 @@ class ShortenerView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
-        links = models.Link.objects.all()
+        user = request.user
+        links = models.Link.objects.filter(user=user)
         serializer = serializers.LinkSerializer(links, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = serializers.LinkSerializer(data=request.data)
+        data = request.data
+        data.update({'user': request.user.id})
+        serializer = serializers.LinkSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -29,8 +32,5 @@ class RedirectView(APIView):
 
     def get(self, request, short_url):
         link = get_object_or_404(models.Link, url_part_short=short_url)
-        link.usage_count += 1
-        link.save()
+        models.Link.objects.filter(url_part_short=short_url).update(usage_count=link.usage_count + 1)
         return HttpResponsePermanentRedirect(link.url_original)
-
-
