@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from shortener.views import ShortenerView
+from shortener.views import ShortenerView, RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
-    # path('<str:short_url>', ShortenerView.as_view())
+    path('<str:short_url>', RedirectView.as_view()),
     path('short/', ShortenerView.as_view())
 ]
 

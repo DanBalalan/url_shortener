@@ -9,6 +9,7 @@ djangorestframework = "==3.11.0"
 psycopg2-binary = "==2.8.4"
 django-rest-auth = "==0.9.5"
 django-allauth = "==0.41.0"
+hashids = "==1.2.0"
 
 [dev-packages]
 
