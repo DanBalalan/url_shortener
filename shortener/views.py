@@ -9,7 +9,7 @@ from . import serializers
 
 
 class ShortenerView(APIView):
-    authentication_classes = [authentication.BasicAuthentication, authentication.TokenAuthentication]
+    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
