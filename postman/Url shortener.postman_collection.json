@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "fadad19b-a453-4342-8ba3-77a24b09b939",
+		"name": "Url shortener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "newUser",
+							"type": "text"
+						},
+						{
+							"key": "password1",
+							"value": "newUserPassword",
+							"type": "text"
+						},
+						{
+							"key": "password2",
+							"value": "newUserPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "0.0.0.0:8000/register/",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "log in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "newUser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "newUserPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "0.0.0.0:8000/login/",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list all user's urls",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Token b1c059214601e2d2edf5500fa4fd24fb2cff9aad",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:8000/short/",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"short",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shorten a link",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Token b1c059214601e2d2edf5500fa4fd24fb2cff9aad",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"url_original\": \"https://docs.djangoproject.com/\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8000/short/",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"short",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "follow short link",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5c710796-a6c5-45a0-8f2f-4c4e3fb33419",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:8000/k84D8",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"k84D8"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
